@@ -43,4 +43,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    public function leaveApplications()
+    {
+        return $this->hasMany(LeaveApplication::class);
+    }
+
 }

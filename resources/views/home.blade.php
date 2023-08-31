@@ -35,26 +35,12 @@
                     <hr>
 
                     <div class="row g-3">
-                        @if (Auth::user()->user_type=='Admin')
-                        <div class="col-md-2">
-                            <a href="#">
-                                <div class="card text-start">
-                                    <img class="card-img-top" src="{{ asset('images/user.png') }}" alt="Users Information">
-                                    <div class="card-body">
-                                      <h4 class="card-title text-center">Users</h4>
-                                    </div>
-                               </div>
-                            </a>
-                        </div>
-                        @endif
-                        @if (Auth::user()->user_type=='Admin')
 
-                        @endif
 
 
                         @if (Auth::user()->user_type=='Employee')
                         <div class="col-md-2">
-                            <a href="#">
+                            <a href="/leave-requests">
                                 <div class="card text-start">
                                     <img class="card-img-top" src="{{ asset('images/leave.png') }}" alt="Leave Requests">
                                     <div class="card-body">
@@ -67,19 +53,26 @@
 
                         @if (Auth::user()->user_type=='Manager')
                         <div class="col-md-2">
-                            <a href="#">
+
+                            <a href="/leave-requests-manager">
                                 <div class="card text-start">
+                                    @if ($LeaveCount>0)
+                                    <h2 style="position: absolute"><span class="badge rounded-pill bg-danger">{{ $LeaveCount }}</span></h2>
+                                    @endif
                                     <img class="card-img-top" src="{{ asset('images/approve.png') }}" alt="Approval Process">
                                     <div class="card-body">
                                     <h4 class="card-title text-center">Approval Process</h4>
                                     </div>
                                 </div>
+
+
                             </a>
                         </div>
                         @endif
 
+                        @if (Auth::user()->user_type=='Employee')
                         <div class="col-md-2">
-                            <a href="#">
+                            <a href="/leave-balance">
                                 <div class="card text-start">
                                     <img class="card-img-top" src="{{ asset('images/leave-balance.jpg') }}" alt="Leave Balances">
                                     <div class="card-body">
@@ -89,16 +82,46 @@
                             </a>
                         </div>
 
+
                         <div class="col-md-2">
-                            <a href="#">
+                            <a href="/my-leave-report">
                                 <div class="card text-start">
                                     <img class="card-img-top" src="{{ asset('images/report.png') }}" alt="Reports">
                                     <div class="card-body">
-                                        <h4 class="card-title text-center">Reports</h4>
+                                        <h4 class="card-title text-center">My Reports</h4>
                                     </div>
                                 </div>
                             </a>
                         </div>
+                        @endif
+
+                        @if (Auth::user()->user_type=='Manager')
+                        <div class="col-md-2">
+                            <a href="/leave-report">
+                                <div class="card text-start">
+                                    <img class="card-img-top" src="{{ asset('images/report.png') }}" alt="Reports">
+                                    <div class="card-body">
+                                        <h4 class="card-title text-center">Leave Reports</h4>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        @endif
+
+                        @if (Auth::user()->user_type=='Admin')
+                        <div class="col-md-2">
+                            <a href="#">
+                                <div class="card text-start">
+                                    <img class="card-img-top" src="{{ asset('images/user.png') }}" alt="Users Information">
+                                    <div class="card-body">
+                                      <h4 class="card-title text-center">Users</h4>
+                                    </div>
+                               </div>
+                            </a>
+                        </div>
+                        @endif
+
+
 
                     </div>
 
