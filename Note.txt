@@ -1,0 +1,26 @@
+i neet create a prject:  to develop a fully functional payroll management software using the Laravel framework. The application should have the following features:
+
+1. User Authentication:
+Simple Employee Leave Application Management System
+
+2. User Type 
+Employees: Can request leaves.
+Managers: Approve or reject leave requests.
+
+3. Define leave categories like vacation, sick leave, etc
+
+4. Leave Requests:
+Employees request time off with dates and reason.
+Managers get notified of new requests.
+
+5. Approval Process:
+Managers approve or reject requests.
+Notifications Email sent to employees.
+
+6. Leave Balances:
+System tracks available leave days.
+
+7. Basic Reporting:
+Simple reports on leave history.
+
+So, give me all process, commands and codes.
