@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 31, 2023 at 02:38 AM
+-- Generation Time: Aug 31, 2023 at 05:49 PM
 -- Server version: 5.7.36
 -- PHP Version: 8.1.0
 
@@ -43,6 +43,62 @@ CREATE TABLE IF NOT EXISTS `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `leave_applications`
+--
+
+DROP TABLE IF EXISTS `leave_applications`;
+CREATE TABLE IF NOT EXISTS `leave_applications` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` bigint(20) UNSIGNED NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `reason` text COLLATE utf8_unicode_ci NOT NULL,
+  `status` enum('pending','approve','reject') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'pending',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `leave_applications_user_id_foreign` (`user_id`),
+  KEY `leave_applications_category_id_foreign` (`category_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `leave_applications`
+--
+
+INSERT INTO `leave_applications` (`id`, `user_id`, `category_id`, `start_date`, `end_date`, `reason`, `status`, `created_at`, `updated_at`) VALUES
+(1, 3, 3, '2023-09-04', '2023-09-06', 'sgsdf gsfdg', 'approve', '2023-08-31 10:23:40', '2023-08-31 11:38:46'),
+(2, 3, 1, '2023-09-20', '2023-09-21', 'cgsfdgsfdg', 'reject', '2023-08-31 10:37:52', '2023-08-31 11:39:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `leave_categories`
+--
+
+DROP TABLE IF EXISTS `leave_categories`;
+CREATE TABLE IF NOT EXISTS `leave_categories` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `leave_categories`
+--
+
+INSERT INTO `leave_categories` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'Vacation', NULL, NULL),
+(2, 'Sick', NULL, NULL),
+(3, 'Personal', NULL, NULL),
+(4, 'Maternity/Paternity', NULL, NULL),
+(5, 'Bereavement', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -52,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -63,7 +119,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
 (3, '2014_10_12_100000_create_password_resets_table', 1),
 (4, '2019_08_19_000000_create_failed_jobs_table', 1),
-(5, '2019_12_14_000001_create_personal_access_tokens_table', 1);
+(5, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(6, '2023_08_31_154346_create_leave_categories_table', 2),
+(7, '2023_08_31_154948_create_leave_applications_table', 3);
 
 -- --------------------------------------------------------
 
