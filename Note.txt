@@ -1,4 +1,4 @@
-i neet create a prject:  to develop a fully functional payroll management software using the Laravel framework. The application should have the following features:
+fully functional payroll management software using the Laravel framework. The application should have the following features:
 
 1. User Authentication:
 Simple Employee Leave Application Management System
@@ -22,5 +22,3 @@ System tracks available leave days.
 
 7. Basic Reporting:
 Simple reports on leave history.
-
-So, give me all process, commands and codes.
